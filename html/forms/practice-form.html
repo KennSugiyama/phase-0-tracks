@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>This is my form</title>
+</head>
+<body>
+<form name="firstform" action="success.html" method="post">
+	<fieldset>
+		<div>
+			<label>First Name:</label>
+			<input type="text" name="firstName">
+		</div>
+
+		<div>
+			<label>Last Name </label>
+			<input type="text" name="lastName">
+		</div>
+
+		<div>
+			<label>Email:</label>
+			<input type="email" name="email">
+		</div>
+
+		<div>
+			<label>Birthdate:</label>
+			<input type="date" name="bday">
+		</div>
+	</fieldset>
+
+	<fieldset>
+	<div>
+		<label>Favorite Food</label>
+		<select name="foodlist">
+			<option value="pasta">Pasta</option>
+			<option value="pizza">Pizza</option>
+			<option value="burrito">Burrito</option>
+			<option value="sushi">Sushi</option>
+		</select>
+	</div>
+
+	<div>
+		<label>Additional Comments</label>
+		<textarea name="comments"  rows="10" cols="30"></textarea>
+	</div>
+	</fieldset>
+
+	<button type="submit">Submit</button>	 
+</form>
+
+
+</body>
+</html>
+
