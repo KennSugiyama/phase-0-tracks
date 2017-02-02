@@ -6,10 +6,10 @@
 * checkbox
 
 # form tags
-* <fieldset>
-* <input>
-* <label>
-* <select>
-* <button>
-* <option>
-* <div>
+* fieldset
+* input
+* label
+* select
+* button
+* option
+* div
