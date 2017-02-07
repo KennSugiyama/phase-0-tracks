@@ -20,6 +20,8 @@ section#contact-info p {
   border-right: 2px solid black;
 }
 
+/* what's the difference between section tag and div tag?"*/
+
 /* We use the last-of-type selector
 to avoid the appearance of an extra
 border. */
@@ -27,3 +29,5 @@ border. */
 section#contact-info p:last-of-type {
   border-right: none;
 }
+
+/* Kenn: not familiar with last-of-type*/
