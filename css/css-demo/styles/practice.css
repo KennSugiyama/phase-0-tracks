@@ -13,3 +13,29 @@ ul.smallerText {
 	font-size: 0.8em;
 }
 
+/*
+
+1) What does the "Cascading" part of Cascading Style Sheets mean? When there is a conflict between two CSS rules that select the same element, how does your browser decide which rule to use?
+
+Cascading refers to the fact that multiple stylesheets can be applied to a website.  In order to resolve conflicting CSS sheets, a proritization system is implemented.
+
+In the case where two CSS rules overlap and conflict each other on the same element, the last CSS style will supercede the other rule.
+
+
+2) Find a cheat sheet or quick guide on CSS selectors, or refer to a cheat sheet you've already bookmarked. What is a pseudoselector? Write a CSS rule that uses a pseudoselector.
+
+A pseudoselector is a class of elements that specify a special state of that element.    In this example, when the button is click, the text will change to red.
+
+.example:focus {color: red;}
+
+3)How can you use CSS to select the child element of another element (for instance, a section inside another section, or an li inside a ul but not inside an ol)? Add an example of such a rule in your CSS.
+
+The ">" can be used to specify applying a style to a child element of another element.
+
+ul > li {color: blue;}
+
+
+
+
+
+

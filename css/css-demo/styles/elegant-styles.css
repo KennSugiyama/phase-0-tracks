@@ -4,6 +4,7 @@ html {
   background-image: url("../images/wov.png");
 }
 
+
 body {
   font-family: "Georgia", serif;
   padding: 20px 30px;
@@ -14,15 +15,29 @@ body {
   font-size: 1.2em;
 }
 
+/*
+Kenn:  Set backgrund image to wov.png.
+Set up the style for the b ody container.
+*/
+
 ul {
   list-style-type: square;
 }
+
+ul > li {
+  color:blue;
+}
+
 
 /* You can select multiple tags at once! */
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Helvetica", sans-serif;
 }
+
+
+/*defined all of the headers 1 to 6 to display helvetica and then alternativec display sans-serif
+*/
 
 /* 
 
