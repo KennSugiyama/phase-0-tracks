@@ -1,3 +1,7 @@
+
+html {
+}
+
 blockquote {
   border-left: 5px solid blue;
   padding: 15px;
@@ -5,8 +9,8 @@ blockquote {
 }
 
 body {
-  width: 960px;
-  outline: 1px solid red;
+  max-width: 960px;
+/*  outline: 1px solid red*/;
 }
 
 cite {
@@ -17,23 +21,21 @@ cite {
 section {
   display: inline-block;
   vertical-align: top;
-  width: 200px;
-  outline: 1px solid green;
+  width: 20%;
+/*  outline: 1px solid green;*/
 }
 
 #external-links ul {
-  width: 200px;
   list-style-type: none;
-  padding-left: 0px;
-  outline: 1px solid blue;
+  padding-left: 10px;
+/*  outline: 1px solid blue;*/
 }
 
 main {
   display: inline-block;
-  width: 756px;
-  outline: 1px solid orange;
+  width: 78%;
+/*  outline: 1px solid orange;*/
 }
-
 
 img {
   width: 100%;
@@ -47,4 +49,86 @@ figure {
 figcaption {
   font-style: italic;
   text-align: right;
+}
+
+
+
+
+@media screen and (max-width: 500px) {
+
+  body {
+  /*  outline: 5px solid blue;*/
+    max-width: 500px;
+  }
+
+   section {
+    display: block;
+    /*outline: 1px solid green;*/
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  #external-links ul {
+    list-style-type: circle;
+    list-style-position: inside;
+    padding-left: 10px;
+    /*outline: 1px solid blue;*/
+  }
+
+  main {
+    width: 85%;
+    display: block;
+    margin: auto;
+    padding-top: 10px;
+    /*outline: 1px solid orange;*/
+  }
+
+  img {
+    display: block;
+    margin: auto;
+  }
+
+  figcaption {
+    font-style: italic;
+    text-align: center;
+  }
+}
+
+
+@media screen and (min-width: 960px) {
+
+  body {
+    max-width: 80%;
+    outline: 5px solid red;
+    columns: 200px || 2;
+    margin: auto;
+  }
+
+section {
+  display: inline-block;
+  vertical-align: top;
+  max-width: 250px;
+/*  outline: 1px solid green;*/
+}
+
+  main {
+    width: 78%;
+    max-width: 1580px;
+     -webkit-columns: 300px 2;
+     -moz-columns: 300px 2;
+    columns: 300px 2;
+    display: inline-block;
+    padding-top: 10px;
+/*    outline: 1px solid orange;*/
+  }
+
+  img {
+    display: block;
+    margin: auto;
+  }
+
+  figcaption {
+    font-style: italic;
+    text-align: center;
+  }
 }
