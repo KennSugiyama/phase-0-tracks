@@ -1,19 +1,3 @@
-
-
-
-
-
-def name_check (name) #Verify name
-	case 
-	when name=="drake cula" || name=="tu fang"
-		true
-	else
-		false
-	end
-end
-
-
-
 puts "What is your name?"
 name = gets.chomp.downcase
 
