@@ -1,7 +1,14 @@
 $result = nil
 
-puts "How many employees would you like to verify?"
-i = no_employees = gets.chomp.to_i
+
+def age_check_Pass(age, b_year) #verify age
+	(Time.now.year - b_year) == age
+end 
+
+
+def name_check_Pass (name)
+	!(name=="drake cula" || name=="tu fang")
+end
 
 
 def werewolf_verification()
@@ -21,19 +28,19 @@ def werewolf_verification()
 	puts "Would you like to enroll in the company's health insurance? (Y or N)"
 	want_insurance = gets.chomp == "y"
 
-
-
-	def age_check_Pass(age, b_year) #verify age
-		(Time.now.year - b_year) == age
-	end 
-
-
-	def name_check_Pass (name)
-		!(name=="drake cula" || name=="tu fang")
+	allergy = nil	
+	until allergy == "sunshine" || allergy == "done"
+		puts "What allergies do you have? (type Done when finished)"
+		allergy = gets.chomp.downcase
+		if allergy == "sunshine"
+			$result = "Probably a vampire"
+			return
+		elsif allergy == "done"
+			$result = nil
+		else
+			$result = nil
+		end
 	end
-
-
-
 
 	if age_check_Pass(age, birth_year) && (like_garlic || want_insurance)
 		$result = "Probably not a vampire."
@@ -56,8 +63,16 @@ def werewolf_verification()
 	end
 end
 
+
+
+puts "How many employees would you like to verify?"
+i = no_employees = gets.chomp.to_i
+	
 while i > 0
 	werewolf_verification
 	p $result
 	i = i-1
 end
+
+puts ""
+puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends"
