@@ -1,3 +1,34 @@
-html {
-	color: red;
+header {
+  border: 2px solid red;
+  padding-left: 2px;
+  background-color: blue;
+  color: yellow;
+}
+
+h1{
+  font-family: "Comic Sans MS", helvetica;
+  text-align: center;
+}
+
+section{
+  display: inline-block;
+  vertical-align: top;
+  width: 45%;
+  border: 2px solid blue;
+  height: 300px;
+  overflow: scroll;
+}
+
+section.column-1  {
+ background-image: url(http://www.planwallpaper.com/static/images/abstract_color_background_picture_8016-wide.jpg);
+ color: white;
+}
+
+section.column-2  {
+  background-image: url(http://www.planwallpaper.com/static/images/colorful-triangles-background_yB0qTG6.jpg)
+
+}
+
+footer  {
+  border: 2px solid orange;
 }
