@@ -1,74 +1,73 @@
-name=nil
-vol=0
-color=nil
-good_candidate=nil
-age=0
-
-
+good_response = false
 
 
 puts "What is the name of your hamster?"
-name=gets.chomp.downcase
+name = gets.chomp.downcase
+#name = 'bob'
 
 
-until vol >= 1 && vol <=10
+until good_response
 	puts "What is the volume level of #{name.capitalize}? (1 - 10)"
-	vol=gets.chomp.to_i
-	if vol <1 || vol >10
-		puts "Your response must be between 1 and 10"	
-	end		
+	vol = gets.chomp.to_i
+	if vol >= 0 && vol <= 10
+		break
+	else
+		puts "Please enter a volume between 0 and 10"
+	end
 end
-
 
 puts "What color is #{name.capitalize}?"
-color=gets.chomp.downcase
+color = gets.chomp.downcase
 
 
-until good_candidate !=nil
+until good_response
 	puts "Do you think #{name.capitalize} is a good candidate for adoption? (Y or N)"
-	good_candidate=gets.chomp.downcase
-	if good_candidate == "y"
+	candidate_response = gets.chomp.downcase
+	case candidate_response
+	when "y"
 		good_candidate = true
-	elsif good_candidate == "n"
+		break
+	when "n"
 		good_candidate = false
+		break
 	else
-		puts "Please answer with a 'Y' or an 'N'"
-		good_candidate=nil
+		puts "please respond with a Y or a N"
 	end
 end
 
 
-until age.to_i > 0 || age.to_s == "unknown" || age.to_s == "Less than a year old"
-	puts "How old is #{name.capitalize} (in years)?"
-	age=gets.chomp.to_i
-	if age == 0
-		age = age.to_s
-		puts "Is #{name.capitalize} less than a year old? (Y or N)"
-		response=gets.chomp.downcase
+
+until good_response
+	puts "How old is #{name.capitalize} "
+	age_response = gets.chomp.to_i
+
+	case age_response
+	when (0)
+		age = nil
+		good_response = true
+	when (1...10)
+		age = age_response
+		good_response = true
+	when (11...100000000)
+		puts "Is #{name.capitalize} really #{age_response} years old?! (y or n)"
+		response = gets.chomp.downcase
 		if response == "y"
-			age = "Less than a year old".to_s
-		else 
-			puts "Do you know how old #{name.capitalize} is? (Y or N)"
-			response=gets.chomp.downcase
-			if response=="n"
-				age="unknown"
-			else
-				puts "Please respond with a 'Y' or a 'N'"
-			end
+			age = age_response
+			good_response = true
+		else
+			good_response = false
 		end
-	else
-		puts "Please respond with a 'Y' or a 'N'"		
 	end
 end
+
 
 puts ""
 puts ""
 puts "******** OUTPUT ********"
-puts name.capitalize
-puts "Age: #{age}"
+puts "Name: #{name.capitalize}"
+puts "Age (years): #{age}"
 puts "Fur Color: #{color.capitalize}"	
 puts "Volume Level: #{vol}"
 puts "Good Candidate for adoption? #{good_candidate}"
-
 
 
