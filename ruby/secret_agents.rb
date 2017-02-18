@@ -37,11 +37,12 @@ end
 
 #DRIVER CODE#
 
-puts "Would you like to encrypt or decrypt your password?" 
-response = gets.chomp.downcase
+
 
 good_response = false
 until good_response
+	puts "Would you like to encrypt or decrypt your password?" 
+	response = gets.chomp.downcase
 	if response == "encrypt"
 		p "What is your password that you want to encrypt?"
 		encrypt (gets.chomp)
