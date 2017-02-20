@@ -1,5 +1,6 @@
 $result = nil
 
+ 
 
 def age_check_Pass(age, b_year) #verify age
 	(Time.now.year - b_year) == age
