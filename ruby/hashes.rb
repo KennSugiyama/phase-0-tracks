@@ -1,3 +1,4 @@
+# BLANK HASH
 Client_Profiles = {
 	full_name: "",
 	address: "",
@@ -9,12 +10,39 @@ Client_Profiles = {
 }
 
 
-def keyEdit (parameter1)
-puts "What value do you want to give #{parameter1}?"
-Client_Profiles[parameter1] = gets.chomp
+# DEFINE METHODS
+def keyEdit (key_to_edit) #Edit values of hash and ensure appropriate datatype.
+	case key_to_edit
+	when "zip_code", "age", "no_of_children"
+		puts "What value do you want to give #{key_to_edit}?"
+		new_value = gets.chomp.to_i
+		Client_Profiles[key_to_edit.intern] = new_value
+	when "has_pets"
+		good_response = false
+		until good_response
+			puts "Has pets (y or n)?"
+			response = gets.chomp
+			if response == "y"
+				good_response = true
+				Client_Profiles[:has_pets] = true
+			elsif response == "n"
+				good_response = true
+				Client_Profiles[:has_pets] = false
+			else
+				puts "please answer with 'y' or 'n'."
+				good_response = false
+			end
+		end
+	else 
+		puts "What value do you want to give #{key_to_edit}?"
+		new_value = gets.chomp	
+		Client_Profiles[key_to_edit.intern] = new_value
+	end
 end
 
 
+
+# DRIVE PROGRAM
 # 1) Prompt designer for client information
 puts "Client's Full Name:"
 Client_Profiles[:full_name] = gets.chomp
@@ -45,11 +73,12 @@ until good_response
 	end
 end
 
+
+# Confirm that user entered all the info in correctly
 puts "You have entered the following information:"
 p Client_Profiles
 puts ""
 puts ""
-
 
 good_response = false
 until good_response
@@ -57,9 +86,8 @@ until good_response
 	response = gets.chomp
 	if response == "y"
 		good_response = true
-		puts " Which key do you want to edit?"
+		puts "Which item would you like to edit?"
 		keyEdit (gets.chomp)
-		# METHOD To EDIT HASH
 	elsif response == "n"
 		good_response = true
 	else
@@ -68,6 +96,9 @@ until good_response
 	end
 end
 
+
+
+# Print final version of hash
 
 puts "Latest Version:"
 p Client_Profiles
