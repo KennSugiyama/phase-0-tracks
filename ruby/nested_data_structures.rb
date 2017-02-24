@@ -80,7 +80,7 @@ shopping_center[:restaurants][:japanese_restaurant][:menu_items].push('sashimi p
 puts "new menus:"
 p shopping_center[:restaurants][:japanese_restaurant][:menu_items]
 puts "***"
-puts "Barnes and Nobles hours have changed from 9:30-10pm, to 10am-11:30pm."
+puts "Barnes and Nobles hoours have changed from 9:30-10pm, to 10am-11:30pm."
 shopping_center[:retail][:books_retailer][:time_open] = "10am"
 shopping_center[:retail][:books_retailer][:time_close] = "11:30pm"
 puts "New time. Open at: #{shopping_center[:retail][:books_retailer][:time_open]} Close at: #{shopping_center[:retail][:books_retailer][:time_close]}  "
