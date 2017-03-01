@@ -2,7 +2,7 @@
 Class: Puppies
 
 Attributes (characteristics)
-1 Size: Caries - Small, Medium, Large
+1 Size: Varies - Small, Medium, Large
 2 Energy-level: 0 - 10
 3 Noise-level: 0 - 10
 4 Name: Varies
