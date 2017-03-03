@@ -25,7 +25,7 @@ class Puppy
   end
 
   def initialize()
-  	puts "Initializing new puppy instance..."
+  	# puts "Initializing new puppy instance..."
   end
 end
 
@@ -33,7 +33,7 @@ end
 
 class Cat
 	def initialize()
-		puts "Initializing new cat instance..."
+		# puts "Initializing new cat instance..."
 	end
 
 	def meow(num)
@@ -59,32 +59,42 @@ end
 
 
 count = 0
-litter = []
+litter_array = []
+toy_array = ["mouse", "ball"]
 num = 50
 
 while count < num do
-	litter[count] = Cat.new
+	litter_array << Cat.new
 	count +=1
 end
 
 
-p litter
-
-
-litter.each do |item|
-	item.meow(3)
+litter_array.each_with_index do |instance, index|
+  puts "~~~~~ Cat Instance No. #{index+1} ~~~~~"
+  if index % 2 == 0
+    instance.fetch("ball")
+  else
+    instance.fetch("toy mouse")
+  end
+  instance.meow(rand (5))
 end
+
+
+# litter_array.each do |instance|
+# 	instance.fetch("ball")
+#   instance.meow(2)
+# end
 
 
 
 #PUPPY DRIVER CODE
-carlos = Puppy.new
-carlos.fetch("ball")
+# carlos = Puppy.new
+# carlos.fetch("ball")
 
-carlos.speak(3)
+# carlos.speak(3)
 
-carlos.roll_over
+# carlos.roll_over
 
-p carlos.dog_years(2)
+# p carlos.dog_years(2)
 
-carlos.sleep 
+# carlos.sleep 
