@@ -33,7 +33,7 @@ class	Santa
 end
 
 
-#driver
+#DRIVER CODE
 santas = []
 gender_array = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
 ethnicity_array = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
@@ -43,7 +43,7 @@ puts "How many santas do you want to simulate?"
 no_of_santas = gets.chomp.to_i
 count = 0
 
-#generate santaa
+#Generate Instances of Santas
 until count == no_of_santas
 	count += 1
 	gender = gender_array[rand(gender_array.length)]
@@ -62,6 +62,9 @@ end
 
 
 
+
+
+#OLD CODE#
 
 #old Class Definitions notes
 	# def reindeer_ranking
@@ -83,11 +86,6 @@ end
 	# def ethnicity
 	#   @ethnicity
 	# end
-
-
-# DRIVER CODE
-
-
 
 
 #Practice Driver Code
