@@ -17,7 +17,7 @@ class TodoList
 	end
 
 	def get_item(index)
-		@todo_list[index	]
+		@todo_list[index]
 	end
 end
 
