@@ -1,11 +1,10 @@
 def create_list(items_string)
 	grocery_list = {}
 	ind_items = items_string.split(" ")
-	p ind_items
 	ind_items.each do |item|
 		grocery_list[item] = 1
 	end
-	p grocery_list
+	return grocery_list
 end
 
 
@@ -36,17 +35,32 @@ def print_list(list)
 		count += 1
 	end
 end
-# h = { "a" => 100, "b" => 200, "c" => 300 }
-# h.delete_if {|key, value| key >= "b" }   #=> {"a"=>100}
+
 
 #driver code
 
 outside_grocery_list = create_list ("carrots apples cereal pizza")
+puts "Create list with carrots, apples, cereal, and pizza"
 p outside_grocery_list
+puts ""
+
+puts "Add 10 tomatos to list."
 p add_item(outside_grocery_list,"tomato",10)
+puts ""
+
+puts "Remove apples from the list."
 p remove_item(outside_grocery_list,"apples")
+puts ""
+
+puts "Update quantity of carrots to 20"
 p update_quantity(outside_grocery_list,"carrots",20)
+puts ""
+
+puts "Update quantity of tomatos to 20"
 p update_quantity(outside_grocery_list,"tomato",5)
+puts ""
+
+puts "Print list:"
 print_list(outside_grocery_list)
 
 
