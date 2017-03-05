@@ -1,14 +1,14 @@
 # CLASS DEFINITION
 class	Santa	
+	attr_reader :age, :ethnicity, :reindeer_ranking
+	attr_accessor :gender
+
 	def initialize(gender, ethnicity, age)
 		@gender = gender
 		@ethnicity = ethnicity
 		@reindeer_ranking = ["Rudloph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
 		@age = age
 	end
-
-	attr_reader :age, :ethnicity, :reindeer_ranking
-	attr_accessor :gender
 
 	def speak()
 		puts "Ho,ho, ho! Haaaaapy holidays!"
