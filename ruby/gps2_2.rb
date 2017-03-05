@@ -1,12 +1,12 @@
 def create_list(items_string)
 	grocery_list = {}
-	split_items = items_string.split(" ")
-	split_items.each do |item|
+	ind_items = items_string.split(" ")
+	p ind_items
+	ind_items.each do |item|
 		grocery_list[item] = 1
 	end
-	return grocery_list
+	p grocery_list
 end
-
 
 
 def add_item (list,item,quantity)
@@ -15,12 +15,39 @@ def add_item (list,item,quantity)
 end
 
 
+def remove_item(list,item)
+	list.delete_if do |key, value|
+		key == item
+	end
+end
+
+
+def update_quantity(list,item,quantity)
+	list[item] = quantity
+	return list	
+end
+
+
+def print_list(list)
+	puts "Shopping List"
+	count = 1
+	list.each do |key, value|
+		puts "#{count} #{key}: #{value}"
+		count += 1
+	end
+end
+# h = { "a" => 100, "b" => 200, "c" => 300 }
+# h.delete_if {|key, value| key >= "b" }   #=> {"a"=>100}
+
 #driver code
 
 outside_grocery_list = create_list ("carrots apples cereal pizza")
 p outside_grocery_list
 p add_item(outside_grocery_list,"tomato",10)
-
+p remove_item(outside_grocery_list,"apples")
+p update_quantity(outside_grocery_list,"carrots",20)
+p update_quantity(outside_grocery_list,"tomato",5)
+print_list(outside_grocery_list)
 
 
 #pseudocode
@@ -53,3 +80,6 @@ p add_item(outside_grocery_list,"tomato",10)
 # remove item from list
 # update quantity for items in the list
 # print the list
+
+
+
