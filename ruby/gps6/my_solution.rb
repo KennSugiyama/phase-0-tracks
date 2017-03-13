@@ -1,7 +1,7 @@
 # Virus Predictor
 
-# I worked on this challenge [by myself, with: ].
-# We spent [#] hours on this challenge.
+# I worked on this challenge [by myself, with: Nate ].
+# We spent [3] hours on this challenge.
 
 # EXPLANATION OF require_relative
 #Relative means that the directory of the file is relative to where the file is being called, whereas if you use 'require' the path starts from ruby's root directory.
@@ -12,7 +12,7 @@ require_relative 'state_data'
 
 class VirusPredictor
 
-#Class initialization method that requirez three arguments: state of origin, population density, and population
+#Class initialization method that requires three arguments: state of origin, population density, and population
   def initialize(state_of_origin, population_density, population)
     @state = state_of_origin
     @population = population
@@ -26,13 +26,13 @@ class VirusPredictor
     speed_of_spread
   end
 
- #The methods below private cannot be called outside of class, it can only be called from the virus_effect method 
-  private
+ #The methods below private cannot be called outside of class, it can only be called from within the class ( virus_effect method). 
+private
 
-#Predicts number of deaths by multipling the population by a multiplier that is determined by the population density
+#Predicts number of deaths by multipyling the population with a multiplier that is determined by the population density
   def predicted_deaths
     # predicted deaths is solely based on population density
-    case @population_density
+    case @population_density  
     when (0...50)
       num = 0.05
     when (50...100)
@@ -46,10 +46,9 @@ class VirusPredictor
     end
     number_of_deaths = (@population * num).floor
     print "#{@state} will lose #{number_of_deaths} people in this outbreak"
-
   end
 
-#method dtermins the speed that the virus will spread, and is determined by the population density.
+#method determins the speed that the virus will spread, and is determined by the population density.
   def speed_of_spread #in months
     # We are still perfecting our formula here. The speed is also affected
     # by additional factors we haven't added into this functionality.
@@ -114,16 +113,13 @@ end
 #   key_name: value,
 # }
 
-
-
-
 # What does require_relative do? How is it different from require?
 # Answered above
 
 # What are some ways to iterate through a hash?
 
 # When refactoring virus_effects, what stood out to you about the variables, if anything?
-# The casscading order was reveresed from when we used the If/elsif/else.
+# The casscading order was reversed from when we used the If/elsif/else.
 
 # What concept did you most solidify in this challenge?
 # About not needing to hand off an instant variable as an argument when calling a method from within the instant variable's class.
