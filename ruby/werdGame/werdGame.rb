@@ -52,14 +52,14 @@ end
 #Driver Code
 #get the secret word from player 1
 puts "Player 1, please enter your secret word."
-game = WerdGame.new(gets.chomp)
+response = gets.chomp
+game = WerdGame.new(response)
 50.times {puts"*"}
 
 
 #player 2 can guess until s/he runs out of chances
 until game.guesses_left < 1
 	puts "What letter do you think is in the word?"
-	
 	puts "Secret Word: #{game.word_in_progress.join(" ")}"
 	puts ""
 	puts "You have #{game.guesses_left} chances remaining."
@@ -81,6 +81,7 @@ else
 	puts "You lose."
 	puts "The secret word was #{game.key.join("")}"
 end
+
 
 
 
