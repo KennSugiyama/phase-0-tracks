@@ -1,0 +1,137 @@
+Description of tables
+1) students
+id,
+name
+super senior status
+points
+team-id
+
+2) teams
+id
+name
+points
+project name
+
+
+
+1) Display info in one table.
+sqlite> SELECT * FROM teams;
+
+OUTPUT:
+1|TEAM Red!|55|Toyota Design
+2|Team Innova|37|IOT and Healthcare
+3|The Gators|48|Smart Drugs & EdTech
+
+
+
+
+2) Update an item that meets a condition
+If student has less than 50 points and is not a super senior(false), then change status to super senior (true)
+
+BEFORE:
+SELECT students.name, students.super_senior, studens FROM students WHERE  points < 50;
+
+OUTPUT:
+Kenn Sugiyama|false|35
+Justin Schief|false|45
+
+
+-AFTER-
+
+UPDATE students SET super_senior="true" WHERE points < 50;
+
+SELECT students.name, students.super_senior, students.points FROM students WHERE points < 50;
+
+OUTPUT:
+Kenn Sugiyama|true|35
+Justin Schief|true|45
+
+
+
+
+3) Display the information in both tables using one query.
+sqlite> SELECT * FROM students, teams WHERE students.team_id = teams.id;
+
+OUTPUT:
+1|Kenn Sugiyama|false|35|1|1|TEAM Red!|55|Toyota Design
+2|Bobby Bob|true|66|2|2|Team Innova|37|IOT and Healthcare
+3|Charlie CharChar|true|53|3|3|The Gators|48|Smart Drugs & EdTech
+4|Justin Schief|false|45|2|2|Team Innova|37|IOT and Healthcare
+5|Michelle Pally|false|66|2|2|Team Innova|37|IOT and Healthcare
+6|Mika Jane|true|80|1|1|TEAM Red!|55|Toyota Design
+7|Steven Arigato|false|77|3|3|The Gators|48|Smart Drugs & EdTech
+8|Morin Jacobe|true|55|3|3|The Gators|48|Smart Drugs & EdTech
+
+
+
+4) Display a narrower selection of columns (fewer columns than all of them, in other words) from both tables using one query.
+
+Display only list of student name, with their team and their team project.
+sqlite> SELECT students.name, teams.name, teams.project_name FROM students JOIN teams on students.team_id = teams.id;
+
+OUTPUT:
+Kenn Sugiyama|TEAM Red!|Toyota Design
+Bobby Bob|Team Innova|IOT and Healthcare
+Charlie CharChar|The Gators|Smart Drugs & EdTech
+Justin Schief|Team Innova|IOT and Healthcare
+Michelle Pally|Team Innova|IOT and Healthcare
+Mika Jane|TEAM Red!|Toyota Design
+Steven Arigato|The Gators|Smart Drugs & EdTech
+Morin Jacobe|The Gators|Smart Drugs & EdTech
+
+
+5) Delete an item that meets some condition (you can choose a condition that makes sense).
+
+BEFORE: 
+SELECT * FROM teams;
+
+OUTPUT:
+1|TEAM Red!|55|Toyota Design
+2|Team Innova|37|IOT and Healthcare
+3|The Gators|48|Smart Drugs & EdTech
+
+
+-AFTER-
+sqlite> DELETE FROM teams WHERE name = "TEAM Red!";
+sqlite> SELECT * FROM teams;
+
+OUTPUT:
+
+2|Team Innova|37|IOT and Healthcare
+3|The Gators|48|Smart Drugs & EdTech
+
+
+
+RELEASE 3
+
+INNER JOIN:
+
+SELECT students.name, teams.project_name
+   ...> FROM students
+   ...> INNER JOIN teams
+   ...> ON students.team_id = teams.id;
+
+
+OUTPUT:
+Bobby Bob|IOT and Healthcare
+Charlie CharChar|Smart Drugs & EdTech
+Justin Schief|IOT and Healthcare
+Michelle Pally|IOT and Healthcare
+Steven Arigato|Smart Drugs & EdTech
+Morin Jacobe|Smart Drugs & EdTech
+
+LEFT JOIN:
+SELECT students.name, teams.project_name
+   ...> FROM students
+   ...> LEFT JOIN teams
+   ...> ON students.team_id = teams.id;
+
+OUTPUT:
+Kenn Sugiyama|
+Bobby Bob|IOT and Healthcare
+Charlie CharChar|Smart Drugs & EdTech
+Justin Schief|IOT and Healthcare
+Michelle Pally|IOT and Healthcare
+Mika Jane|
+Steven Arigato|Smart Drugs & EdTech
+Morin Jacobe|Smart Drugs & EdTech
