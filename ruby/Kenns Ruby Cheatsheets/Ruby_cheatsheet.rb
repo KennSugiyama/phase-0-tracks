@@ -150,3 +150,40 @@ def delete_item(item_to_delete)
 attr_accessor :letters_used, :guesses_left  These attributes are readable and writable from outside of the class
 attr_reader :word_in_progress, :key These attributes can be read outside of the class 
 
+
+
+HASHES
+current_teams = [
+	{name: "Innova",
+	project: "Cafe Project: Busy Student"},
+	{name: "The Jasons",
+	project: "Cafe Project: New Student"},
+	{name: "Team Red",
+	project: "Cafe Project: Super Senior"},
+	{name: "TBDz",
+	project: "Cafe Project: Music Lover"},
+	{name: "Profiteers",
+	project: "Cafe Project: Hipster"},
+	{name: "The Greens",
+	project: "Cafe Project: The Athlete"},
+	{name: "Gators",
+	project: "Cafe Project: The Health Nut"},
+	{name: "JAKAL",
+	project: "Cafe Project: The Party Girl"},
+	{name: "Spark",
+	project: "Cafe Project: The Busy Body"}]
+
+#test code
+# p current_teams
+# p current_teams[1]
+# p current_teams[1][:name]
+
+# def print_teams(current_teams)
+# 	current_teams.each do |team|
+# 		p team[:name]
+# 		p team[:project]
+# 	end
+# end
+
+# print_teams(current_teams)
+

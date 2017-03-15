@@ -48,7 +48,6 @@ Justin Schief|true|45
 
 
 
-
 3) Display the information in both tables using one query.
 sqlite> SELECT * FROM students, teams WHERE students.team_id = teams.id;
 
