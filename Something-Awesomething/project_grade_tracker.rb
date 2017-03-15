@@ -1,4 +1,4 @@
-db.execute(create_#{table}_table_cmd)
+# db.execute(create_#{table}_table_cmd)
 
 #LOOK INTO eval
 # give method... takes a string.. evaluats string into ruby
