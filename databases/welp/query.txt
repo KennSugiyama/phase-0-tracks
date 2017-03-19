@@ -1,0 +1,50 @@
+2) Joining three tables
+
+SELECT * FROM REVIEWS  
+JOIN businesses
+ON business_id = businesses.id
+JOIN users
+ON user_id = users.id
+;
+
+
+OUTPUT:
+1|4|wow|2|3|2|Amir's Towing|3|Angela|Jolie
+2|4|okay|2|1|2|Amir's Towing|1|Bradford|Pitt
+3|4|okay|2|1|2|Amir's Towing|1|Bradford|Pitt
+4|3|wow|2|3|2|Amir's Towing|3|Angela|Jolie
+5|3|whatever|4|2|4|lotus Yoga|2|Mandy|Kaling
+
+
+
+3) Display specific attributes
+SELECT users.first_name, users.last_name, reviews.stars, businesses.name, reviews.comment FROM REVIEWS 
+JOIN businesses
+ON reviews.business_id = businesses.id
+JOIN users
+ON reviews.user_id = users.id
+WHERE users.last_name = "Pitt"
+;
+
+
+OUTPUT:
+Bradford|Pitt|4|Amir's Towing|okay
+Bradford|Pitt|4|Amir's Towing|okay
+
+
+
+
+
+3) View all tables for one business
+SELECT users.first_name, users.last_name, reviews.stars, businesses.name, reviews.comment FROM REVIEWS 
+JOIN businesses
+ON reviews.business_id = businesses.id
+JOIN users
+ON reviews.user_id = users.id
+WHERE businesses.name = "Amir's Towing"
+;
+
+OUTPUT:  Angela|Jolie|4|Amir's Towing|wow
+Bradford|Pitt|4|Amir's Towing|okay
+Bradford|Pitt|4|Amir's Towing|okay
+Angela|Jolie|3|Amir's Towing|wow
