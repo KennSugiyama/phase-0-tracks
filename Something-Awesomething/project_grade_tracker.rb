@@ -1,6 +1,9 @@
 # Goal 1: Create students and assign to teams
-# Goal 2: Choose and team and display all students who are in that team
-# Goal 3: Track grades for 3 Assignments
+# Goal 2: Choose a team and display all students who are in that team
+# Goal 3: Track grades for 3 Assignments by assigning random student grades for each assinment.
+# Goal 4: Display roster
+
+
 
 #SETUP DATABASE
 require 'sqlite3'
@@ -14,6 +17,7 @@ TABLES_TITLE = ["teams", "assignments", "assignment_grades", "students"]
 #CREATE TABLES
 def create_tables
   DB.execute ("DROP TABLE IF EXISTS teams")
+  DB.execute ("DROP TABLE IF EXISTS assignments")
 
   create_teams_table_cmd = <<-SQL
     CREATE TABLE IF NOT EXISTS teams(
@@ -76,8 +80,7 @@ end
 
 def create_students(num)
   num.times do
-    points = (70+rand(20)).floor
-    DB.execute("INSERT INTO students (name,student_points) VALUES (?,?)", [Faker::Name.name,points])
+    DB.execute("INSERT INTO students (name) VALUES (?)", [Faker::Name.name,])
   end
 end
 
@@ -122,16 +125,63 @@ def view_students_of_team
   search_result.each do |result|
     puts "#{num}) #{result["student_name"]}"
     num += 1
-
-
   end
-
-
-
-  
-  # response = gets.chomp
-  
 end
+
+def populate_assignment_table( assignment_list)
+  assignment_list
+  assignment_list.each do |assignment|
+    assignment[:title]
+    DB.execute("INSERT INTO assignments (title) VALUES (?)",[assignment[:title]])
+  end
+end
+
+def populate_assignment_grades_table
+student_ids = DB.execute("SELECT id FROM students")
+assignment_ids = DB.execute("SELECT id FROM assignments")
+  student_ids.each do |student|
+    assignment_ids.each do |assignment|
+      random_points = (60+rand(20)).floor
+      DB.execute("INSERT INTO assignment_grades (points, assignment_id, student_id) VALUES (?, ?, ?)",[random_points,assignment["id"],student["id"]])
+    end
+  end
+end
+
+def generate_roster
+  cmd = <<-SQL
+    SELECT students.id, students.name AS student_name, teams.name AS team_name
+    FROM students
+    JOIN teams
+    on students.team_id = teams.id
+  SQL
+
+  roster = DB.execute(cmd)
+
+  roster.each do |assignment|
+    puts "Student: #{assignment['student_name']}"
+    puts "Student ID: #{assignment['id']}"
+    puts "Team Name: #{assignment['team_name']}\n"
+    puts ""
+  end
+end
+
+
+def view_grades
+  cmd = <<-SQL
+    SELECT students.id, students.name, assignments.title, assignment_grades.points FROM assignment_grades 
+    JOIN assignments
+    ON assignment_grades.assignment_id = assignments.id
+    JOIN students
+    ON assignment_grades.student_id = students.id
+  SQL
+
+  student_assignments = DB.execute(cmd)
+  student_assignments.each do |student|
+    puts "#{student["name"]}"
+    puts "\t #{student["title"]} : #{student["points"]}"
+  end
+end
+
 
 
 
@@ -156,6 +206,16 @@ current_teams = [
   {name: "Spark",
   project: "Cafe Project: The Busy Body"}]
 
+
+assignment_list = [
+  {title: "Assignment 1"},
+  {title: "Assignment 2"},
+  {title: "Assignment 3"}]
+
+
+
+
+
 #DRIVER CODE
 
 #SetUp
@@ -166,13 +226,63 @@ create_tables
 populate_teams_table(current_teams)
 puts "How many students do you want to create?"
 create_students(gets.chomp.to_i)
+
+
 assign_students_to_teams
-view_students_of_team
-# DB.execute("SELECT students.name, teams.name, teams.project_name FROM students, teams WHERE students.team_id = teams.id;")
+populate_assignment_table(assignment_list)
+populate_assignment_grades_table #with random grades
 
 
 
 
+#Features
+
+
+# View students in team"
+# puts "Do you want to see all the students who are in a particular team? (y/n)"
+# if gets.chomp == "y"
+#   view_students_of_team
+# end
+
+
+# 
+# 
+quit = false
+good_response = false
+
+until quit
+  until good_response  
+    puts "What would you like to do?"
+    puts "1) View students who are in a particular team"
+    puts "2) View student roster"
+    puts "3) View student grades"
+    response = gets.chomp
+    case response
+    when "1" 
+      view_students_of_team
+      good_response = true
+    when "2" 
+      generate_roster
+      good_response = true
+    when "3" 
+      view_grades
+      good_response = true
+    else
+      puts "please select a number"
+      good_response = false
+    end
+  end
+
+puts "Type 'end' to quit or any key to continue"
+response = gets.chomp
+
+  if response == "end"
+    quit = true
+  else
+    good_response = false
+    quit = false
+  end
+end 
 
 
 
@@ -189,36 +299,15 @@ view_students_of_team
 
 
 # #Populate Assignment Table with 3 assignments
-# assignment_list = [
-#   {title: "Assignment 1"},
-#   {title: "Assignment 2"},
-#   {title: "Assignment 3"}]
 
 
-#  #Populate Assignment Table with data
-# def populate_assignment_table(db, assignment_list)
-#   assignment_list.each do |assignment|
-#       db.execute("INSERT INTO assignments (title) VALUES (?)",[assignment[:title]])
-#   end
-# end
-
-# populate_assignment_table(db, assignment_list)
 
 
-# #Populate Assignment Grades Table
-# def populate_assignment_grades_table(db)
-# 	student_ids = db.execute("SELECT id FROM students")
-# 	assignment_ids = db.execute("SELECT id FROM assignments")
-#   student_ids.each do |student|
-#   	puts "student #{student["id"]}"
-#   	assignment_ids.each do |assignment|
-#   		random_points = (60+rand(20)).floor
-#   		p assignment["id"].class
-#   		db.execute("UPDATE assignment_grades SET points = ? WHERE student_id = ? AND assignment_id = ?", [random_points,student["id"],assignment["id"]])
-#   		p db.execute("SELECT * FROM assignment_grades")
-#   	end
-#   end
-# end
+
+# 
+
+
+
 
 
 # populate_assignment_grades_table(db)
