@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+    <title>jQuery Tutorial</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <style type="text/css">
+    .jumbotron {
+        text-align: center;
+    }
+    button {
+        width: 100px;
+        height: 40px;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Let's Have Fun!</h1>
+            <button id="btn1">#btn1</button>
+            <button id="btn2">#btn2</button>
+            <button id="btn3">#btn3</button>
+            <button id="btn4">#btn4</button>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-3">
+                <div id="panel1" class="panel panel-primary">
+                    <div class="panel-heading">
+                        #panel1
+                    </div>
+                    <div class="panel-body">
+                        content
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div id="panel2" class="panel panel-primary">
+                    <div class="panel-heading">
+                        #panel2
+                    </div>
+                    <div class="panel-body">
+                        content
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div id="panel3" class="panel panel-primary">
+                    <div class="panel-heading">
+                        #panel3
+                    </div>
+                    <div class="panel-body">
+                        content
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div id="panel4" class="panel panel-primary">
+                    <div class="panel-heading">
+                        #panel4
+                    </div>
+                    <div class="panel-body">
+                        content
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+	<script>
+		$(function() {
+			$('#panel1').hide(300).show(1000).delay(500).hide(300).show(400).css({color: 'red', 'font-weight':'bold'});
+
+			$('#panel2').slideUp(300).slideDown(1000).delay(500).slideUp(300).slideDown(400).css({color: 'green', opacity:'0.20'});
+
+			$('#panel3').fadeOut(300).fadeIn(1000).delay(500).fadeOut(300).fadeIn(1000);
+
+			$('#panel4').fadeToggle(300).delay(500).slideToggle(1000);
+
+			$('#btn1').html("Kenn's Butt");
+
+			$('#panel2').html("kenn's Panel No. 2");
+
+		
+		});
+
+
+	</script>
+
+</body>
+</html>
