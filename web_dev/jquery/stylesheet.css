@@ -1,0 +1,23 @@
+
+.jumbotron {
+text-align: center;
+background-color: #CACACA;
+outline: 2px solid red;
+font-family: "helvetica";
+}
+
+
+button {
+width: 100px;
+height: 40px;
+font-family: "helvetica";
+font-size: 1.5em;
+}
+
+.panel-primary {
+	margin: auto;
+	border: 3px solid #73AD21;
+	width: 20%;
+	display: inline-block;
+	position: relative;
+}
